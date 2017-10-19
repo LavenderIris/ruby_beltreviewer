@@ -1,0 +1,77 @@
+<style>
+        .inline {
+            display:inline-block;
+        }
+    </style>
+            
+        
+        <a class="inline" href="/events">Events Dashboard</a>
+        <a class="inline" data-method="post" href="/logout">Logout</a>
+        <h1>Edit your event</h1>
+        
+        <form action="/events/update/<%= @event.id %>" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> 
+            <input type="hidden" name="_method" value="patch">
+            Name: <input type="text" name="event[name]" value="<%=@event.name%>"> <br>
+            Date: <input type="date" name="event[date]" value="<%=@event.date.to_date%>"> <br>
+            Location: <input type="text" name="event[location]" value="<%= @event.location%>"> 
+            
+            <select name="event[state]">
+                    <option value="AL"  <% if @event.state == 'AL' %> selected <% end %> >Alabama</option>
+                    <option  value="AK" <% if @event.state == 'AK' %> selected <% end %> >Alaska</option>
+                    <option  value="AZ" <% if @event.state == 'AZ' %> selected <% end %> >Arizona</option>
+                    <option  value="AR" <% if @event.state == 'AR' %> selected <% end %> >Arkansas</option>
+                    <option value="CA"  <% if @event.state == 'CA' %> selected <% end %> >California</option>
+                    <option value="CO" <% if @event.state == 'CO' %> selected <% end %> >Colorado</option>
+                    <option value="CT" <% if @event.state == 'CT' %> selected <% end %> >Connecticut</option>
+                    <option value="DE" <% if @event.state == 'DE' %> selected <% end %> >Delaware</option>
+                    <option value="DC" <% if @event.state == 'DC' %> selected <% end %> >District Of Columbia</option>
+                    <option value="FL" <% if @event.state == 'FL' %> selected <% end %> >Florida</option>
+                    <option value="GA" <% if @event.state == 'GA' %> selected <% end %>>Georgia</option>
+                    <option value="HI" <% if @event.state == 'HI' %> selected <% end %> >Hawaii</option>
+                    <option value="ID" <% if @event.state == 'ID' %> selected <% end %> >Idaho</option>
+                    <option value="IL" <% if @event.state == 'IL' %> selected <% end %> >Illinois</option>
+                    <option value="IN" <% if @event.state == 'IN' %> selected <% end %> >Indiana</option>
+                    <option value="IA" <% if @event.state == 'IA' %> selected <% end %> >Iowa</option>
+                    <option value="KS" <% if @event.state == 'KS' %> selected <% end %> >Kansas</option>
+                    <option value="KY" <% if @event.state == 'KY' %> selected <% end %> >Kentucky</option>
+                    <option value="LA" <% if @event.state == 'LA' %> selected <% end %> >Louisiana</option>
+                    <option value="ME" <% if @event.state == 'ME' %> selected <% end %> >Maine</option>
+                    <option value="MD" <% if @event.state == 'MD' %> selected <% end %> >Maryland</option>
+                    <option value="MA" <% if @event.state == 'MA' %> selected <% end %> >Massachusetts</option>
+                    <option value="MI" <% if @event.state == 'MI' %> selected <% end %> >Michigan</option>
+                    <option value="MN" <% if @event.state == 'MN' %> selected <% end %> >Minnesota</option>
+                    <option value="MS" <% if @event.state == 'MS' %> selected <% end %> >Mississippi</option>
+                    <option value="MO" <% if @event.state == 'MO' %> selected <% end %> >Missouri</option>
+                    <option value="MT" <% if @event.state == 'MT' %> selected <% end %> >Montana</option>
+                    <option value="NE" <% if @event.state == 'NE' %> selected <% end %> >Nebraska</option>
+                    <option value="NV" <% if @event.state == 'NV' %> selected <% end %> >Nevada</option>
+                    <option value="NH" <% if @event.state == 'NH' %> selected <% end %> >New Hampshire</option>
+                    <option value="NJ" <% if @event.state == 'NJ' %> selected <% end %> >New Jersey</option>
+                    <option value="NM" <% if @event.state == 'NM' %> selected <% end %> >New Mexico</option>
+                    <option value="NY" <% if @event.state == 'NY' %> selected <% end %> >New York</option>
+                    <option value="NC" <% if @event.state == 'NC' %> selected <% end %> >North Carolina</option>
+                    <option value="ND" <% if @event.state == 'ND' %> selected <% end %> >North Dakota</option>
+                    <option value="OH" <% if @event.state == 'OH' %> selected <% end %> >Ohio</option>
+                    <option value="OK" <% if @event.state == 'OK' %> selected <% end %> >Oklahoma</option>
+                    <option value="OR" <% if @event.state == 'OR' %> selected <% end %> >Oregon</option>
+                    <option value="PA" <% if @event.state == 'PA' %> selected <% end %> >Pennsylvania</option>
+                    <option value="RI" <% if @event.state == 'RI' %> selected <% end %> >Rhode Island</option>
+                    <option value="SC" <% if @event.state == 'SC' %> selected <% end %> >South Carolina</option>
+                    <option value="SD" <% if @event.state == 'SD' %> selected <% end %> >South Dakota</option>
+                    <option value="TN" <% if @event.state == 'TN' %> selected <% end %> >Tennessee</option>
+                    <option value="TX" <% if @event.state == 'TX' %> selected <% end %> >Texas</option>
+                    <option value="UT" <% if @event.state == 'UT' %> selected <% end %> >Utah</option>
+                    <option value="VT" <% if @event.state == 'VT' %> selected <% end %> >Vermont</option>
+                    <option value="VA" <% if @event.state == 'VA' %> selected <% end %> >Virginia</option>
+                    <option value="WA" <% if @event.state == 'WA' %> selected <% end %> >Washington</option>
+                    <option value="WV" <% if @event.state == 'WV' %> selected <% end %> >West Virginia</option>
+                    <option value="WI">Wisconsin</option>
+                    <option value="WY">Wyoming</option>
+            </select> <br>
+            <input type="submit" value="Update Profile">
+        </form>
+    
+        <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %><<br></div>
+        <% end %>

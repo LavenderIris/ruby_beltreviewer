@@ -1,0 +1,73 @@
+<style>
+    textarea {
+        resize: none;
+        padding: 0px 0px 0px 0px;
+        overflow-y: scroll;
+    }
+
+</style>
+<h1 class="inline spacing" > Edit your profile</h1>
+<a class="inline spacing" href="/events">Events Dashboard</a>
+<a class="inline spacing" data-method="post" href="/logout">Logout</a>
+
+
+
+<div class="container"> 
+    <div class="row">
+        <div class=".col-sm-6"> 
+
+            <h1><%= @event.name %></h1>
+            Host: <%= @event.user.firstname %> <%= @event.user.lastname %> <br>
+            Date: <%= @event.date.to_date %> <br>
+            Location: <%= @event.location %> <br>
+            Number of people attending the event: <%= @event.users.count %> <br>
+            <br>
+            <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Location</td>
+                    <td>State</td>
+                </tr>
+            </thead>
+                <% @event.users.each do |user| %>
+                <tr>
+                    <td><%=user.firstname%> <%=user.lastname%></td>
+                    <td><%=user.location%></td>
+                    <td><%=user.state%></td>
+                </tr>
+                <% end %>
+            </table>
+        </div>
+        <!-- end of left column -->
+        
+        
+        
+        
+        <div class=".col-sm-6 spacing"> 
+            <h4>Discussion about this event</h4>
+            <textarea name="" id="" cols="30" rows="10">
+<% @comments.each do |comment| %>
+<%= comment.user.firstname %> says: <%= comment.comment %>  
+______________
+<% end %>
+            </textarea>
+
+
+            <form action="/add_comment" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                Add Comment: <br>
+                <input type="hidden" name="event" value="<%= @event.id %>" >
+                <textarea name="comment" id="" cols="30" rows="3"></textarea>
+                 <br>
+                <input type="submit" value="Submit Comment">
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+<% flash.each do |key, value| %>
+<div class="alert alert-<%= key %>"><%= value %><<br></div>
+<% end %>
