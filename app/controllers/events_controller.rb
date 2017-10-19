@@ -25,7 +25,9 @@ class EventsController < ApplicationController
   end
 
   def show
+
     @event = Event.find(params[:id])
+    
     @comments = Comment.where(event_id:params[:id]) 
   end
 
@@ -40,7 +42,12 @@ class EventsController < ApplicationController
   end
 
   def edit_show
+  
+
     @event = Event.find(params[:id])
+    redirect_to '/events' if current_user != @event.user
+    
+
   end
 
   def add_comment
